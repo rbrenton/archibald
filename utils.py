@@ -1,41 +1,41 @@
 import math
 
 # The current season year
-CURRENT_SEASON = 2015
+CURRENT_SEASON = 2016
 
-# Game key - set to NFL 2015
-GAME_KEY=348
+# Game key - set to NFL 2016
+GAME_KEY = 359
 
 # Positions, and the nubmer of each per-team.
 # TODO: Get this from league settings.
 POSITIONS = {
-	'RB':  1, 
-	'W/R/T': 1,
-	'WR':  2, 
-	'DEF': 1,
-	'BN':  1, 
-	'QB':  1, 
-	'TE':  1,
-	'K,': 1,
-	'BN': 5,
+	'QB'   : 1, 
+	'WR'   : 3, 
+	'RB'   : 2, 
+	'TE'   : 1,
+	'K,'   : 1,
+	'DEF'  : 1,
+	'BN'   : 6,
+	'IR'   : 1, 
+	'W/R/T': 0,
 }
 
 # Possible player status fields
-INJURED = "IR" 
-DISABLED = "DL"
-NOT_ACTIVE = "NA"
-PROBABLE = "P"
+INJURED      = "IR" 
+DISABLED     = "DL"
+NOT_ACTIVE   = "NA"
+PROBABLE     = "P"
 QUESTIONABLE = "Q"
-OUT = "O"
-OK = "OK"
+OUT          = "O"
+OK           = "OK"
 BAD_STATUSES = [INJURED, DISABLED, NOT_ACTIVE, OUT]
 
 # Player states 
-ALL = "A"
+ALL        = "A"
 FREE_AGENT = "FA"
-WAIVER = "W"
-TAKEN = "T"
-KEEPERS = "K"
+WAIVER     = "W"
+TAKEN      = "T"
+KEEPERS    = "K"
 
 # XML to add a player.
 ADD_PLAYER_XML = """<?xml version='1.0'?>  

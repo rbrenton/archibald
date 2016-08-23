@@ -171,7 +171,7 @@ class Team(object):
 		assert old_player.team_key == self.team_key 
 		url = "league/%s/transactions" % self.league_key
 		replace_str = ADD_DROP_XML % (new_player.player_key, self.team_key,
-					      old_player.player_key, self.team_key)
+						  old_player.player_key, self.team_key)
 		head = {'Content-Type': 'application/xml'}
 
 		try:
@@ -252,13 +252,15 @@ class Team(object):
 		url = "team/%s/roster/players?format=json" % self.team_key
 		self.roster_json = self.api.get(url)
 		players = self.roster_json['team'][1]['roster']['0']['players']
-		count = players['count']
 
 		# Set attributes based on the received json 
 		_players = []
-		for i in range(count):
-			p = Player(players[str(i)], self.api, self) 
-			_players.append(p)
+
+		if len(players) > 0:
+			count = players['count']
+			for i in range(count):
+				p = Player(players[str(i)], self.api, self) 
+				_players.append(p)
 		return _players
 	
 
@@ -404,7 +406,7 @@ class Player(object):
 	def _get_ownership(self):
 		# Build URL
 		base = "league/%s/players;" % self.api.league_key 
-                specific = "player_keys=%s/ownership?format=json" % self.player_key	
+		specific = "player_keys=%s/ownership?format=json" % self.player_key	
 		url = base + specific
 
 		# Query for Ownership stats
